@@ -19,6 +19,7 @@ import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ImageGallery } from '@/components/ImageGallery';
 import { ProductCard } from '@/components/ProductCard';
+import Navigation from '@/components/Navigation';
 import { mockProducts } from '@/data/products';
 import { useCart } from '@/hooks/useCart';
 import { useToast } from '@/hooks/use-toast';
@@ -110,6 +111,9 @@ const ProductDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <Navigation />
+      
       {/* Breadcrumb */}
       <nav className="border-b border-border bg-surface/50">
         <div className="container mx-auto px-4 py-4">

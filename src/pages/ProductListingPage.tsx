@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { ProductCard } from '@/components/ProductCard';
 import { SearchBar } from '@/components/SearchBar';
 import { FilterSidebar } from '@/components/FilterSidebar';
+import Navigation from '@/components/Navigation';
 import { mockProducts } from '@/data/products';
 import { FilterOptions, SortOption, Product } from '@/types/product';
 import { useCart } from '@/hooks/useCart';
@@ -96,6 +97,9 @@ const ProductListingPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <Navigation />
+      
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">

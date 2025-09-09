@@ -113,6 +113,10 @@ export const useCart = () => {
     return item ? item.quantity : 0;
   };
 
+  const getTotalItems = () => {
+    return cart.itemCount;
+  };
+
   return {
     cart,
     addToCart,
@@ -120,6 +124,7 @@ export const useCart = () => {
     updateQuantity,
     clearCart,
     isInCart,
-    getItemQuantity
+    getItemQuantity,
+    getTotalItems
   };
 };
