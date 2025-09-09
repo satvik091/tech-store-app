@@ -2,41 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* E-Commerce Design System - All colors, gradients, fonts, etc defined here. 
+All colors MUST be HSL for perfect theming.
 */
 
 @layer base {
   :root {
+    /* Background & Surface Colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 225 15% 20%;
+    --surface: 220 20% 98%;
+    --surface-hover: 220 20% 95%;
 
+    /* Card Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 225 15% 20%;
+    --card-hover: 220 20% 98%;
 
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 225 15% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Professional E-commerce Palette */
+    --primary: 220 70% 50%;
+    --primary-hover: 220 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 220 70% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary Actions */
+    --secondary: 220 20% 95%;
+    --secondary-hover: 220 20% 90%;
+    --secondary-foreground: 225 15% 30%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Subtle Elements */
+    --muted: 220 15% 96%;
+    --muted-hover: 220 15% 92%;
+    --muted-foreground: 225 10% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent Colors */
+    --accent: 280 70% 55%;
+    --accent-hover: 280 70% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 140 70% 45%;
+    --warning: 40 90% 55%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders & Inputs */
+    --border: 220 20% 85%;
+    --border-hover: 220 30% 75%;
+    --input: 220 20% 95%;
+    --input-focus: 220 70% 50%;
+    --ring: 220 70% 50%;
 
-    --radius: 0.5rem;
+    /* Layout */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(280 70% 65%));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--background)));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 hsl(225 15% 20% / 0.1);
+    --shadow-md: 0 4px 12px 0 hsl(225 15% 20% / 0.15);
+    --shadow-lg: 0 8px 25px 0 hsl(225 15% 20% / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +139,43 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* E-commerce specific component styles */
+  .product-card {
+    @apply bg-card border border-border rounded-lg overflow-hidden shadow-sm;
+    @apply hover:shadow-md hover:border-border-hover;
+    transition: var(--transition-smooth);
+  }
+  
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground font-medium px-6 py-2.5 rounded-lg;
+    @apply hover:scale-105 active:scale-95;
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .surface-elevated {
+    @apply bg-surface border border-border rounded-lg;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
